@@ -1,6 +1,10 @@
 # Nangu test app
-## Info
-Při vývoji jsem použil lokální postgres DB takže pokud chcete aplikaci spustit je třeba ji vytvořit. V resources lze najít skript na její vytvoření.
+## Technologie
+1. PostgreSQL - Při vývoji jsem použil lokální postgres DB takže pokud chcete aplikaci spustit je třeba ji vytvořit. V resources lze najít skript na její vytvoření.
+2. Spring Boot
+3. MyBatis - ORM
+4. Java 8
+5. Maven
 
 ## Nice to have - málo času
 1. Udělat novej konfig a DB proti které by běželi testy.

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="nangu.test.demoapp.dao.MessageDao">
+
+  <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+    INSERT INTO T_MESSAGE(text, username)
+    VALUES (#{message.text}, #{message.userName})
+  </insert>
+
+  <select id="getById" resultType="nangu.test.demoapp.domain.Message">
+    SELECT *
+    FROM t_message
+    WHERE id = #{messageId}
+  </select>
+
+  <select id="getAllMessagesOfSelectedUser" resultType="nangu.test.demoapp.domain.Message">
+    SELECT *
+    FROM T_MESSAGE
+    WHERE username = #{userName}
+    ORDER BY ID
+  </select>
+
+  <update id="updateMessage">
+    UPDATE t_message
+    SET text = #{message.text}
+    WHERE id = #{message.id}
+  </update>
+
+  <delete id="deleteMessage">
+    DELETE
+    FROM t_message
+    WHERE id = #{messageId}
+  </delete>
+
+  <select id="getAllMessagesByFilter" resultType="nangu.test.demoapp.domain.Message">
+    SELECT * FROM t_message
+    <if test="messageFilter != null">
+      <where>
+        <if test="messageFilter.userName != null">
+          username = #{messageFilter.userName}
+        </if>
+        <if test="messageFilter.textContained">
+          AND text ilike '%' || #{messageFilter.textContained} || '%'
+        </if>
+      </where>
+    </if>
+  </select>
+
+</mapper>

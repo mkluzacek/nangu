@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="nangu.test.demoapp.dao.UserDao">
+
+  <insert id="insert">
+    INSERT INTO T_USER(username, password) values(#{user.userName}, #{user.password})
+  </insert>
+
+  <select id="selectByUserName" resultType="nangu.test.demoapp.domain.User">
+    SELECT * FROM T_USER WHERE USERNAME=#{userName}
+  </select>
+
+  <select id="userExists" resultType="boolean">
+    SELECT EXISTS(SELECT 1 FROM t_user WHERE username = #{user.userName} AND password = #{user.password})
+  </select>
+
+</mapper>

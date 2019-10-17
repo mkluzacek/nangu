@@ -1,0 +1,25 @@
+create database nangu
+	with owner postgres;
+
+create table if not exists t_user
+(
+	username varchar(32) not null
+		constraint t_user_pk
+			primary key,
+	password varchar(32)
+);
+
+alter table t_user owner to postgres;
+
+create table if not exists t_message
+(
+	id serial not null
+		constraint t_message_pk
+			primary key,
+	text varchar(256),
+	username varchar(32)
+		constraint t_user___fk
+			references t_user
+);
+
+alter table t_message owner to postgres;

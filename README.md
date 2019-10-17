@@ -1,4 +1,4 @@
-# Nangu test app
+# Nangu exam app
 ## Technologie
 1. PostgreSQL - Při vývoji jsem použil lokální postgres DB takže pokud chcete aplikaci spustit je třeba ji vytvořit. V resources lze najít skript na její vytvoření.
 2. Spring Boot
